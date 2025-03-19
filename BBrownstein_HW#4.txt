@@ -1,0 +1,168 @@
+Ben Brownstein HW#4
+Budgeter
+Soucrecode:
+import java.util.Scanner;
+public class budgeter {
+	public static final int DAYS_IN_MONTH = 31;
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		intro();
+		int dIM = daysInMonth(sc);
+		double ti = income(sc);
+		double te = expense(sc, dIM);
+		System.out.println("Total income = $" + ti + " ($" + formatNum(ti/dIM) + "/day)");
+		System.out.println("Total expenses = $" + te + " ($" + formatNum(te/dIM) + "/day)");
+		if (ti > te) 
+		{
+			double saved = ti - te;
+			System.out.println("You earned $" + formatNum(saved) + " more than you spent this month.");
+			if (saved >= 250) 
+			{
+				System.out.println("You're a big saver.");
+			} else 
+			{
+				System.out.println("You're a saver.");
+			}
+		}
+		if (te >= ti) 
+		{
+			double spent = te - ti;
+			System.out.println("You spent $" + formatNum(spent) + " more than you earned this month.");
+			if (spent >= 250) 
+			{
+				System.out.println("You're a big spender.");
+			} else 
+			{
+				System.out.println("You're a spender.");
+			}
+		}
+	}
+	public static void intro()
+	{
+		System.out.println("This program asks for your monthly income and\r\n" + "expenses, then tells you your net monthly income.\r\n" + "");
+	
+	}
+	public static double income (Scanner in) 
+	{
+		System.out.print("How many categories of income? ");
+		int categories = in.nextInt();
+		double totalIncome = 0;
+		for (int i = 1; i <= categories; i++) 
+		{
+			System.out.print("\tNext income amount? $");
+			totalIncome = totalIncome + in.nextDouble();
+		}
+		System.out.println();
+		return formatNum(totalIncome);
+		
+	}
+	public static double expense(Scanner ex, int daysInMonth) 
+	{
+		System.out.print("Enter 1) monthly or 2) daily expenses? ");
+		int type = ex.nextInt();
+		System.out.print("How many categories of expense? ");
+		if (type == 1) 
+		{
+			int categories = ex.nextInt();
+			double expense = 0;
+			for (int i = 1; i <= categories; i++) 
+			{
+				System.out.print("\tNext income amount? $");
+				expense = expense + ex.nextDouble();
+			}
+			System.out.println();
+			return formatNum(expense);
+		}
+		else
+		{
+			int categories = ex.nextInt();
+			double expense = 0;
+			for (int i = 1; i <= categories; i++) 
+			{
+				System.out.print("\tNext income amount? $");
+				expense = expense + ex.nextDouble();
+			}
+			expense = expense * daysInMonth;
+			System.out.println();
+			return formatNum(expense);
+		}
+	}
+	public static int daysInMonth(Scanner days) 
+	{
+		System.out.print("What month of the year is it (1-12): ");
+		int month = days.nextInt();
+		if (month == 2)return 28;
+		if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) 
+		{
+			return 31;
+		} else return 30;
+		
+		
+	}
+	public static double formatNum(double inValue) 
+	{
+        return ((int)(inValue * 100.))/100.;
+ }
+}
+
+Output:
+Sample 1:
+This program asks for your monthly income and
+expenses, then tells you your net monthly income.
+
+What month of the year is it (1-12): 1
+How many categories of income? 3
+	Next income amount? $1000
+	Next income amount? $205.25
+	Next income amount? $175.50
+
+Enter 1) monthly or 2) daily expenses? 1
+How many categories of expense? 4
+	Next income amount? $850
+	Next income amount? $49.95
+	Next income amount? $75
+	Next income amount? $120.67
+
+Total income = $1380.75 ($44.54/day)
+Total expenses = $1095.62 ($35.34/day)
+You earned $285.13 more than you spent this month.
+You're a big saver.
+
+Sample 2:
+This program asks for your monthly income and
+expenses, then tells you your net monthly income.
+
+What month of the year is it (1-12): 1
+How many categories of income? 2
+	Next income amount? $800
+	Next income amount? $200.25
+
+Enter 1) monthly or 2) daily expenses? 2
+How many categories of expense? 1
+	Next income amount? $45.33
+
+Total income = $1000.25 ($32.26/day)
+Total expenses = $1405.23 ($45.33/day)
+You spent $404.98 more than you earned this month.
+You're a big spender.
+
+Sample 3:
+This program asks for your monthly income and
+expenses, then tells you your net monthly income.
+
+What month of the year is it (1-12): 2
+How many categories of income? 3
+	Next income amount? $100
+	Next income amount? $357.59
+	Next income amount? $214.5
+
+Enter 1) monthly or 2) daily expenses? 2
+How many categories of expense? 2
+	Next income amount? $5.00
+	Next income amount? $10
+
+Total income = $672.08 ($24.0/day)
+Total expenses = $420.0 ($15.0/day)
+You earned $252.08 more than you spent this month.
+You're a big saver.

@@ -1,0 +1,316 @@
+Ben Brownstein Midterm
+Short Answer
+1. if (n == null || n == 0)
+2. The integer number 143 when covered to binary 143-128=15, 15-8=7, 7-4=3, 3-2=1, 1-1=0 which in binary is 10001111.
+3. The binary number to be converted is 111101 which equals 32+16+8+4+0+1 which equals 61.
+4. For loops loop until the condition is true and while loops loop until the condition is false.
+5. 
+if (gpa >= 3.5 && gpa < 3.75)
+{
+	System.out.println(“You made the Honor Roll”);
+}
+
+6. The correct code for the question is 
+public class TharBeMistakesHere {
+
+    public static void main(String[] aarghs) {
+
+          int menOnADeadmansChest = 16;
+
+          int bottlesORum = 1;
+
+          String yosandhos = "yo ho ho";
+
+          singIt(menOnADeadmansChest, yosandhos, bottlesORum);
+    }
+    public static void singIt(int men, String yos, int bottles) {
+
+          System.out.println(men + " men on a dead man's chest..." +
+
+                yos + " and " +  bottles + " bottle of rum");
+    }
+}
+The mistake was there was no bottles int variable in the method singIt.
+
+7. The public part of a Java method defines if the code can be accessed from anywhere in the code or if it is private it can only be acessed in its class. The static makes it so only static methods work in the method. The class is what kind of value the method can return.
+
+Programming Projects
+1.
+Sourcecode
+	public static Boolean hasDigit(String input) 
+	{
+	if (input == null)return false;
+	for (int i = 0; i <= input.length() - 1; i++) 
+	{
+			if (input.charAt(i) == '0'||input.charAt(i) == '1'|| input.charAt(i) == '2'|| input.charAt(i) == '3'|| input.charAt(i) == '4'|| input.charAt(i) == '5'|| input.charAt(i) == '6'|| input.charAt(i) == '7'|| input.charAt(i) == '8'|| input.charAt(i) == '9')
+			{
+				return true;
+			}
+			
+	}
+		return false;
+	}
+Output:
+Input: @Mecredi2016 hasDigit Output: true
+Input: Motorcycle: hasDigit Output: false
+
+2.
+Sourcecode:
+	public static Boolean hasMixedCase(String input) 
+	{
+	if (input == null)return false;
+	int upper = 0;
+	int lower = 0;
+	for (int i = 0; i <= input.length() - 1; i++) 
+	{
+		if (Character.isUpperCase(input.charAt(i))) 
+		{
+			upper = 1;
+		}
+		if (Character.isLowerCase(input.charAt(i)))
+		{
+			lower =  1;
+		}
+		if (upper + lower == 2) return true;
+	}
+		return false;
+	}
+Output:
+Input: @Mecredi2016 hasMixedCase Output: true
+Input: motorcycle: hasMixedCase Output: false
+
+3.
+Sourcecode:
+	public static Boolean hasSpecial (String input) 
+	{
+		if (input == null)return false;
+		for (int i = 0; i <= input.length() - 1; i++) 
+		{
+				if (input.charAt(i) == '!'||input.charAt(i) == '@'|| input.charAt(i) == '#'|| input.charAt(i) == '$'|| input.charAt(i) == '%'|| input.charAt(i) == '^'|| input.charAt(i) == '&'|| input.charAt(i) == '*')
+				{
+					return true;
+				}
+				
+		}
+		return false;
+	}
+Output:
+Input: @Marigold2016 hasSpecial Output: true
+Input: Motorcycle: hasSpecial Output: false
+
+4.
+Sourcecode:
+import java.util.Scanner;
+public class passwordstrength {
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		int score = 0;
+		String done = "done";
+		while(true) 
+		{
+			score = 0;
+			String in = sc.next();
+			if (in.equals(done)) 
+			{
+				System.out.println("Finished!");
+				break;
+			}
+			if (hasDigit(in) == true) score = score + 1;
+			if (hasMixedCase(in) == true) score = score + 1;
+			if (hasSpecial(in) == true) score = score + 1;
+			if (in.length() >= 10) score = score + 1;
+			if (score <= 1) 
+			{
+				System.out.println ("Poor Password");
+			}else if(score == 2) 
+			{
+				System.out.println ("Weak Password");
+			}else if(score == 3) 
+			{
+				System.out.println ("Adequate Password");
+			}else if(score == 4) 
+			{
+				System.out.println ("Strong Password");
+			}
+		}
+	}
+	public static Boolean hasDigit(String input) 
+	{
+	if (input == null)return false;
+	for (int i = 0; i <= input.length() - 1; i++) 
+	{
+			if (input.charAt(i) == '0'||input.charAt(i) == '1'|| input.charAt(i) == '2'|| input.charAt(i) == '3'|| input.charAt(i) == '4'|| input.charAt(i) == '5'|| input.charAt(i) == '6'|| input.charAt(i) == '7'|| input.charAt(i) == '8'|| input.charAt(i) == '9')
+			{
+				return true;
+			}
+			
+	}
+		return false;
+	}
+	public static Boolean hasMixedCase(String input) 
+	{
+		if (input == null)return false;
+		int upper = 0;
+		int lower = 0;
+		for (int i = 0; i <= input.length() - 1; i++) 
+		{
+			
+			if (Character.isUpperCase(input.charAt(i))) 
+			{
+				upper = 1;
+			}
+			if (Character.isLowerCase(input.charAt(i)))
+			{
+				lower =  1;
+			}
+			if (upper + lower == 2) return true;
+		}
+		return false;
+	}
+	public static Boolean hasSpecial(String input) 
+	{
+		if (input == null)return false;
+		for (int i = 0; i <= input.length() - 1; i++) 
+		{
+				if (input.charAt(i) == '!'||input.charAt(i) == '@'|| input.charAt(i) == '#'|| input.charAt(i) == '$'|| input.charAt(i) == '%'|| input.charAt(i) == '^'|| input.charAt(i) == '&'|| input.charAt(i) == '*')
+				{
+					return true;
+				}
+				
+		}
+			return false;
+	}
+}
+
+Output:
+Enter a password ==>foobar
+Poor Password
+Enter a password ==>Foobar
+Poor Password
+Enter a password ==>F00bar
+Weak Password
+Enter a password ==>@F00b@r
+Adequate Password
+Enter a password ==>!F00b@riff1c
+Strong Password
+Enter a password ==>done
+Finished!
+
+5.
+Sourcecode:
+public class numpyramid {
+	public static final int BOTTOM_NUM = 9;
+	public static void main(String[] args) 
+	{
+		for (int i = 1; i <= BOTTOM_NUM/2 + 1; i++) 
+		{
+			for (int j = 1; j <= (BOTTOM_NUM/2 + 1) - i+1; j++) 
+			{
+				System.out.print("-");
+			}
+			for (int k = 1; k <= i + (i-1); k++) 
+			{
+				System.out.print(i * 2 - 1);
+			}
+			for (int l = 1; l <= (BOTTOM_NUM/2 + 1) - i +1; l++) 
+			{
+				System.out.print("-");
+			}
+			System.out.println();
+		}
+	}
+}
+Output:
+-----1-----
+----333----
+---55555---
+--7777777--
+-999999999-
+
+----1----
+---333---
+--55555--
+-7777777-
+
+6.
+Sourcecode:
+public class insertStr {
+
+	public static void main(String[] args) 
+	{
+		System.out.println(insertStr("A Man a plan Panama", "####", 0));
+		System.out.println(insertStr("A Man a plan Panama", "####", 200));
+		System.out.println(insertStr("A Man a plan Panama", "####", 5));
+	}
+	public static String insertStr(String str1, String str2, int pos) 
+	{
+		if (pos > str1.length()) 
+		{
+			str1 = str1.concat(str2);
+			return str1;
+		}
+		if (pos <= 0) 
+		{
+			str1 = str2.concat(str1);
+			return str1;
+		}
+		if (str1 == null) return "null";
+		if (str2 == null) return "null";
+		String tempString = new String();  
+		for (int i = 0; i < str1.length(); i++) 
+		{ 
+			tempString = tempString + str1.charAt(i); 
+	            if (i == pos-1) { 
+	                tempString = tempString + str2; 
+	            } 
+	    }
+		return tempString;
+	}
+}
+
+Output:
+####A Man a plan Panama
+A Man a plan Panama####
+A Man#### a plan Panama
+
+Extra Credit
+2.
+Source code:
+public class leapyear {
+	public static void main(String[] args) 
+	{
+		System.out.println("Number of days in Feb, 2010 = " + leapYear(2010));
+		System.out.println("Number of days in Feb, 2012 = " + leapYear(2012));
+		System.out.println("Number of days in Feb, 2000 = " + leapYear(2000));
+		System.out.println("Number of days in Feb, 2100 = " + leapYear(2100));
+		System.out.println("Number of days in Feb, 1600 = " + leapYear(1600));
+		System.out.println("Number of days in Feb, 1700 = " + leapYear(1700));
+		System.out.println("Number of days in Feb, 2020 = " + leapYear(2020));
+
+	}
+	public static int leapYear(int year) 
+	{
+		if (year % 4 == 0) 
+		{
+			if (year % 400 == 0) 
+			{
+				return 29;
+			}
+			if (year % 100 == 0) 
+			{
+				return 28;
+			}
+			return 29;
+		}
+		return 28;
+	}
+}
+Output:
+Number of days in Feb, 2010 = 28
+Number of days in Feb, 2012 = 29
+Number of days in Feb, 2000 = 29
+Number of days in Feb, 2100 = 28
+Number of days in Feb, 1600 = 29
+Number of days in Feb, 1700 = 28
+Number of days in Feb, 2020 = 29

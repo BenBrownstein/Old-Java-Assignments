@@ -1,0 +1,226 @@
+Ben Brownstein HW#3
+Exercise 13:
+Sourcecode:
+package pay;
+
+public class pay {
+	public static void main(String[] args) 
+	{
+		pay(4.0, 11);
+	}
+	public static void pay(double salary, int hours) 
+	{
+		//Due to me missing class 1/29/2020 I had to look up how to use if statements because nothing else seemed to make the code work 
+		if (hours > 8)
+		{
+			double total = salary * 8;
+			double overtime = salary * 1.5 * (hours-8);
+			total = total + overtime;
+			System.out.println("The TA made " + total + " this week.");
+		}
+		else 
+		{
+			double total = salary * hours;
+			System.out.println("The TA made " + total + " this week.");
+		}
+		
+	}
+}
+Output:
+The TA made 50.0 this week.
+
+
+Exercise 16:
+Sourcecode:
+package triangleArea;
+
+public class TriangleArea {
+
+	public static void main(String[] args) 
+	{
+		triangleArea(2,2,2);
+	}
+	public static void triangleArea(double a, double b, double c) 
+	{
+		double s = (a + b + c)/2;
+		double area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+	    System.out.println("The area of the triangle with sides of " + a + ", " + b +", and "+ c +" is "+ area + ".");
+	}
+}
+Output:
+The area of the triangle with sides of 2.0, 2.0, and 2.0 is 1.7320508075688772.
+
+Exercise 17:
+Sourcecode:
+package padString;
+
+public class PadString {
+	public static void main(String[] args) 
+	{
+		System.out.print(padString ("hello", 10));
+	}
+	public static String padString(String str, int n)  
+	{
+		//Due to me missing class 1/29/2020 I had to look up how to use if statements because nothing else seemed to make the code work
+		if(str.length() > n) 
+		{
+			return str;
+		}
+		else 
+		{
+			int strLen = str.length();
+			for (int i = strLen; i < n; i++)
+			{
+				str = str + "-";
+			}
+			return str;
+		}
+	}
+}
+Output:
+hello-----
+
+Exercise 18:
+Sourcecode:
+package vertical;
+
+public class Vertical {
+	public static void main(String[] args) 
+	{
+		vertical ("hey now");
+	}
+	public static void vertical(String str) 
+	{
+		for (int i = 0; i < str.length(); i++) 
+		{
+			System.out.println(str.charAt(i));
+		}
+	}
+}
+Output:
+h
+e
+y
+ 
+n
+o
+w
+
+Exercise 20:
+Sourcecode:
+package inputBirthday;
+import java.util.Scanner;
+public class InputBirthday {
+	public static void main(String[] args) 
+	{
+		Scanner console = new Scanner (System.in);
+	    System.out.print("On what day of the month were you born? ");
+	    int day = console.nextInt();
+	    System.out.print("What is the name of the month in which you were born? ");
+	    String month = console.next();
+	    System.out.print("During what year were you born? ");
+	    int year = console.nextInt();
+	    System.out.println("You were born on " + month + " " + day + ", " + year + ".");
+	}
+}
+Output:
+On what day of the month were you born? 19
+What is the name of the month in which you were born? June
+During what year were you born? 2001
+You were born on June 19, 2001.
+
+Project 2:
+Sourcecode:
+package bankInterest;
+
+public class BankInterest {
+	public static void main(String[] args) 
+	{
+		investment();
+	}
+	public static void investment() 
+	{
+		double interest = 0.065;
+		double balance = 1000;
+		double deposit = 0.0;
+		System.out.print("Year");
+		System.out.print("\t Current Balance");
+		System.out.print("\t New Deposit");
+		System.out.println("\t New Balance");
+		for (int i = 1; i <= 25; i++) 
+		{
+			System.out.print("Year " + i);
+			System.out.print("\t " + balance);
+			deposit = 100 + (interest * balance);
+			System.out.print("\t\t " + deposit);
+			balance = balance + deposit;
+			System.out.println("\t\t " + balance);
+		}
+	}
+}
+
+Output:
+Year	 Current Balance	 New Deposit	 New Balance
+Year 1	 1000.0		 165.0		 1165.0
+Year 2	 1165.0		 175.72500000000002		 1340.725
+Year 3	 1340.725		 187.14712500000002		 1527.8721249999999
+Year 4	 1527.8721249999999		 199.311688125		 1727.183813125
+Year 5	 1727.183813125		 212.266947853125		 1939.450760978125
+Year 6	 1939.450760978125		 226.06429946357812		 2165.515060441703
+Year 7	 2165.515060441703		 240.7584789287107		 2406.273539370414
+Year 8	 2406.273539370414		 256.4077800590769		 2662.681319429491
+Year 9	 2662.681319429491		 273.07428576291693		 2935.755605192408
+Year 10	 2935.755605192408		 290.82411433750656		 3226.5797195299147
+Year 11	 3226.5797195299147		 309.7276817694445		 3536.3074012993593
+Year 12	 3536.3074012993593		 329.85998108445835		 3866.1673823838178
+Year 13	 3866.1673823838178		 351.30087985494816		 4217.468262238766
+Year 14	 4217.468262238766		 374.13543704551984		 4591.603699284286
+Year 15	 4591.603699284286		 398.45424045347863		 4990.057939737765
+Year 16	 4990.057939737765		 424.35376608295473		 5414.411705820719
+Year 17	 5414.411705820719		 451.9367608783468		 5866.348466699066
+Year 18	 5866.348466699066		 481.31265033543934		 6347.661117034506
+Year 19	 6347.661117034506		 512.5979726072429		 6860.259089641749
+Year 20	 6860.259089641749		 545.9168408267137		 7406.175930468462
+Year 21	 7406.175930468462		 581.4014354804501		 7987.577365948912
+Year 22	 7987.577365948912		 619.1925287866793		 8606.769894735591
+Year 23	 8606.769894735591		 659.4400431578134		 9266.209937893405
+Year 24	 9266.209937893405		 702.3036459630714		 9968.513583856477
+Year 25	 9968.513583856477		 747.953382950671		 10716.466966807147
+
+Project 3:
+Sourcecode:
+public class daysOfChristmas 
+{
+	public static void main(String[] args) 
+	{
+		daysOfChristmas();
+	}
+	public static void daysOfChristmas() 
+	{
+		int total = 0;
+		System.out.print("Day");
+		System.out.print("\t Presents Received");
+		System.out.println("\t Total Presents");
+		for (int i = 1; i <= 12; i++) 
+		{
+			System.out.print(i);
+			System.out.print("\t " + i);
+			total = total + i;
+			System.out.println("\t\t\t " + total);	
+		}
+	}
+}
+Output:
+Day	 Presents Received	 Total Presents
+1	 1			 1
+2	 2			 3
+3	 3			 6
+4	 4			 10
+5	 5			 15
+6	 6			 21
+7	 7			 28
+8	 8			 36
+9	 9			 45
+10	 10			 55
+11	 11			 66
+12	 12			 78

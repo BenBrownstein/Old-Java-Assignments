@@ -1,0 +1,178 @@
+Ben Brownstein HW#1
+Problem 1:
+Source Code:
+public class Stewie {
+
+	public static void main(String[] args) {
+		System.out.println("////////////////////////");
+		System.out.println(" || Victory is mine! || ");
+		System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
+
+	}
+
+}
+Output:
+////////////////////////
+ || Victory is mine! || 
+\\\\\\\\\\\\\\\\\\\\\\\\
+
+Problem 3:
+Soruce Code:
+public class WellFormed {
+
+	public static void main(String[] args) {
+		System.out.println("A well-formed Java program has");
+		System.out.println("has { and } \nbraces.");
+		System.out.println("\nA System.out.println statement");
+		System.out.println("has ( and ) and usually a");
+		System.out.println("String that starts and ends");
+		System.out.println("with a \" character.");
+		System.out.println("(But we type \\\" instead!)");
+	}
+
+}
+Output:
+A well-formed Java program has
+has { and } 
+braces.
+
+A System.out.println statement
+has ( and ) and usually a
+String that starts and ends
+with a " character.
+(But we type \" instead!)
+
+Problem 5:
+Source Code:
+public class MuchBetter {
+
+	public static void main(String[] args) {
+		System.out.println("A \"quoted\" String is");
+		System.out.println("'much' beyyer if you learn");
+		System.out.println("the rules of \"escape sequences.\"");
+		System.out.println("Also, \"\" represents an empty String.");
+		System.out.println("Don't forget: use \\\" instead of \" !");
+		System.out.println("'' is not the same as \"");
+	}
+
+}
+Output:
+A "quoted" String is
+'much' beyyer if you learn
+the rules of "escape sequences."
+Also, "" represents an empty String.
+Don't forget: use \" instead of " !
+'' is not the same as "
+
+Problem 8:
+Source Code:
+public class Stewie2 {
+
+	public static void main(String[] args) {
+		System.out.println("////////////////////////");
+		middleBottom();
+		middleBottom();
+		middleBottom();
+		middleBottom();
+		middleBottom();
+	}
+
+
+	public static void middleBottom() {
+		System.out.println(" || Victory is mine! || ");
+		System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
+	}
+}
+Output:
+////////////////////////
+ || Victory is mine! || 
+\\\\\\\\\\\\\\\\\\\\\\\\
+ || Victory is mine! || 
+\\\\\\\\\\\\\\\\\\\\\\\\
+ || Victory is mine! || 
+\\\\\\\\\\\\\\\\\\\\\\\\
+ || Victory is mine! || 
+\\\\\\\\\\\\\\\\\\\\\\\\
+ || Victory is mine! || 
+\\\\\\\\\\\\\\\\\\\\\\\\
+
+Problem 9:
+Source Code:
+public class Egg {
+
+	public static void main(String[] args) {
+		System.out.println("  _______  ");
+		System.out.println(" /       \\ ");
+		System.out.println("/         \\");
+		System.out.println("-\"-'-\"-'-\"-");
+		System.out.println("\\         /");
+		System.out.println(" \\_______/");
+	}
+
+}
+Output:
+  _______  
+ /       \ 
+/         \
+-"-'-"-'-"-
+\         /
+ \_______/
+
+Problem 10:
+Source Code:
+
+public class Egg2 {
+	public static void main(String[] args) {
+		top();
+		bottom();
+		System.out.println("");
+		middle();
+		System.out.println("");
+		top();
+		bottom();
+		System.out.println("");
+		middle();
+		bottom();
+		System.out.println("");
+		top();
+		middle();
+		bottom();
+	}
+	public static void top() {
+		System.out.println("  _______  ");
+		System.out.println(" /       \\ ");
+		System.out.println("/         \\");
+	}
+	public static void middle() {
+		System.out.println("-\"-'-\"-'-\"-");
+	}
+	public static void bottom() {
+		System.out.println("\\         /");
+		System.out.println(" \\_______/");
+	}
+}
+Output:
+  _______  
+ /       \ 
+/         \
+\         /
+ \_______/
+
+-"-'-"-'-"-
+
+  _______  
+ /       \ 
+/         \
+\         /
+ \_______/
+
+-"-'-"-'-"-
+\         /
+ \_______/
+
+  _______  
+ /       \ 
+/         \
+-"-'-"-'-"-
+\         /
+ \_______/

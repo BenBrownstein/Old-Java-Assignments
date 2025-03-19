@@ -1,0 +1,211 @@
+Ben Brownstein HW#2
+Problem 5:
+Source Code:
+public class StarTriangle {
+
+	public static void main(String[] args) {
+		starMaker();
+	}
+
+	public static void starMaker() {
+		for (int i = 1; i <= 5; i++) {
+			for (int j = 1; j <= i; j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+	}
+}
+Output:
+*
+**
+***
+****
+*****
+
+Problem 7:
+Sourcecode:
+package spacedNumbers;
+
+public class spacedNumbers {
+	public static void main(String[] args) {
+		spacedNums();
+	}
+	public static void spacedNums() {
+		for (int i = 1; i <= 5; i++ ) {
+			for (int j = 1; j <=5-i; j ++) {
+				System.out.print(" ");
+			}
+			System.out.println(i);
+		}
+	}
+}
+
+Output:
+    1
+   2
+  3
+ 4
+5
+
+Problem 9:
+Sourcecode:
+package waveNumbers40;
+
+public class waveNumbers40 {
+
+	public static void main(String[] args) 
+	{
+		line1();
+		line2();
+		line3();
+		line1();
+	}
+
+	public static void line1() 
+	{
+		for (int i = 1; i <= 40; i++) 
+		{
+			System.out.print("-");
+		}
+		System.out.println();
+	}
+
+	public static void line2() 
+	{
+		for (int i = 1; i <= 10; i++) 
+		{
+			System.out.print("_-^-");
+		}
+		System.out.println();
+	}
+
+	public static void line3() 
+	{
+		for (int i = 1; i <= 2; i++) 
+		{
+			System.out.print("11223344556677889900");
+		}
+		System.out.println();
+	}
+}
+
+Output:
+package waveNumbers40;
+
+public class waveNumbers40 {
+
+	public static void main(String[] args) 
+	{
+		line1();
+		line2();
+		line3();
+		line1();
+	}
+
+	public static void line1() 
+	{
+		for (int i = 1; i <= 40; i++) 
+		{
+			System.out.print("-");
+		}
+		System.out.println();
+	}
+
+	public static void line2() 
+	{
+		for (int i = 1; i <= 10; i++) 
+		{
+			System.out.print("_-^-");
+		}
+		System.out.println();
+	}
+
+	public static void line3() 
+	{
+		for (int i = 1; i <= 2; i++) 
+		{
+			System.out.print("11223344556677889900");
+		}
+		System.out.println();
+	}
+}
+
+Problem 10:
+Sourcecode:
+package numbersOutput60;
+
+public class numbersOutput60 {
+
+	public static void main(String[] args) {
+		top();
+		bottom();
+	}
+	public static void top()
+	{
+		for (int i = 1; i <= 6; i++) 
+		{
+			for (int j = 1; j <= 9; j++) 
+			{
+				System.out.print(" ");
+			}
+			System.out.print("|");
+		}
+		System.out.println();
+	}
+
+	public static void bottom() 
+	{
+		for (int i = 1; i<= 6; i++) 
+		{
+			for (int j = 1; j <= 9; j++) 
+			{
+				System.out.print(j);
+			}
+			System.out.print("0");
+		}
+	}
+}
+
+Output:
+         |         |         |         |         |         |
+123456789012345678901234567890123456789012345678901234567890
+
+Problem 11:
+Sourcecode:
+package numbersOutputConstant;
+
+public class numbersOutputConstant {
+	public static final int REPITION = 7;
+	public static final int COUNT = 4;
+	public static void main(String[] args) {
+		NumbersOutput();
+	}
+	
+	public static void NumbersOutput()
+	{
+		for (int i = 1; i <= REPITION; i++) 
+		{
+			for (int j = 1; j <= COUNT; j++) 
+			{
+				System.out.print(" ");
+			}
+			System.out.print("|");
+		}
+		System.out.println();
+		for (int i = 1; i<= REPITION; i++) 
+		{
+			for (int j = 1; j <= COUNT; j++) 
+			{
+				System.out.print(j);
+			}
+			System.out.print("0");
+		}
+	}
+
+
+}
+
+Output:
+    |    |    |    |    |    |    |
+12340123401234012340123401234012340

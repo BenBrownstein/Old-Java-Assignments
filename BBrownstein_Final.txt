@@ -1,0 +1,465 @@
+Ben Brownstein Final
+Thought Exercises and Number Conversions
+1.
+int x = specific value;
+if (someNums[someNums.length/2] <= x) 
+{
+	System.out.println("The value is in the second half");
+} else
+{
+	System.out.println("The value is in the first half");
+}
+2.The first test would be to see 55 greater than or less than x3. The second test would be to see if 55 greater than or less than x1 or x5 depending on the result of the first test x1 if 55 > x3 and x5 if 55 < x3. 
+If the second test returns that 55 < x1/x5 the third test would be to see if 55 == x2/x6 but if the the second test returns that 55 > x1/x5 the third test would be to see if 55 == x0/x4 if those test false 55 is not in the array.
+3. 100010001000
+4. 3.13
+
+Multiple Choice
+1. 1
+2. 5
+3. 2
+4. 2
+5. 3
+5 Extra Credit. 2,5
+6. 4
+
+Programming Exercises
+1.Sourcecode:
+import java.util.Arrays;
+
+public class removeElement {
+	public static void main(String[] args) 
+	{
+		double[] a1 = {5.2, 38.5, 41.3, 39.3, 26.8, 47.6, 2.1, 5.3, 13.5, 32.6};
+		double[] a2 = {5.2, 38.5, 41.3, 39.3, 26.8, 47.6, 2.1, 5.3, 13.5, 32.6};
+		double[] a3 = {5.2, 38.5, 41.3, 39.3, 26.8, 47.6, 2.1, 5.3, 13.5, 32.6};
+		
+		System.out.println(Arrays.toString(removeElement(5,a1)));
+		System.out.println(Arrays.toString(removeElement(0,a2)));
+		System.out.println(Arrays.toString(removeElement(9,a3)));
+
+	}
+	public static double[] removeElement(int index, double[] a) 
+	{
+		if (a == null) 
+		{
+			throw new IllegalArgumentException("The array must not be null");
+		}
+		if (index > a.length) 
+		{
+			throw new IllegalArgumentException("The index cannot be larger than the array");
+		}
+		double temp;
+			for (int i = index; i <= a.length -2; i++) 
+		{
+			temp = a[i+1];
+			a[i] = temp;
+		}
+		a[a.length -1] = 0.0;
+		return a;
+	}
+}
+
+Output:
+[5.2, 38.5, 41.3, 39.3, 26.8, 2.1, 5.3, 13.5, 32.6, 0.0]
+[38.5, 41.3, 39.3, 26.8, 47.6, 2.1, 5.3, 13.5, 32.6, 0.0]
+[5.2, 38.5, 41.3, 39.3, 26.8, 47.6, 2.1, 5.3, 13.5, 0.0]
+
+2.
+Sourcecode:
+import java.util.Scanner;
+import java.util.Random;
+public class generate {
+
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner (System.in);
+		Random ran = new Random();
+		generate(sc,ran);
+	}
+	public static void generate(Scanner sc, Random ran) 
+	{
+		int count = 0;
+		int guess = 999;
+		System.out.print("Enter a number between -5 and +5 --> ");
+		int num = sc.nextInt();
+		while (num > 5 || num < -5) 
+		{
+			System.out.println("The number entered was out of the range. Please try again.");
+			System.out.print("Enter a number between -5 and +5 --> ");
+			num = sc.nextInt();
+		}
+		System.out.print("Numbers are: ");
+		while (guess != num) 
+		{
+			count++;
+			guess = ran.nextInt(11) -5;
+			System.out.print(guess + ", ");
+		}
+		System.out.println();
+		System.out.println("Your guess of " + num + " came up after " + count +" tries.");
+	}
+
+}
+
+Output:
+Enter a number between -5 and +5 --> 5
+Numbers are: 3, 2, 1, -4, -3, -1, -3, 0, -1, 5, 
+Your guess of 5 came up after 10 tries.
+Enter a number between -5 and +5 --> -10
+The number entered was out of the range. Please try again.
+Enter a number between -5 and +5 --> 10
+The number entered was out of the range. Please try again.
+Enter a number between -5 and +5 --> 0
+Numbers are: -2, 3, 2, 3, 5, 0, 
+Your guess of 0 came up after 6 tries.
+
+3.
+Sourcecode:
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class rle {
+	public static void main(String[] args) 
+	{
+		ArrayList<Integer> rleHolder = new ArrayList<Integer>();
+		
+		int[] test1 = {6, 6, 6, 6, 1, 1, 1, 9, 9, 9, 9, 9};
+		int[] test2 = {6, 8, 6, 9, 2, 1, 1, 9, 7, 4, 3, 2};
+		int[] test3 = {};
+		
+		System.out.println(Arrays.toString(rle(rleHolder,test1)));
+		System.out.println(Arrays.toString(rle(rleHolder,test2)));
+		System.out.println(Arrays.toString(rle(rleHolder,test3)));
+	}
+	public static int[] rle(ArrayList<Integer> rleHolder, int[] a1) 
+	{
+		if (a1.length == 0) 
+		{
+			int[] zero = {};
+			return zero;
+		}
+		if (a1 == null) 
+		{
+			throw new IllegalArgumentException(" The array is null");
+		}
+		
+		for (int i = 0; i <= a1.length -1; i++) 
+		{
+			int count = 1;
+			int j = 0;
+			while (i < a1.length -1 && a1[i] == a1[i+1]) 
+			{
+					count++;
+					i++;
+			}
+			rleHolder.add(count);
+			rleHolder.add(a1[i]);
+		}
+		int[] x = new int [rleHolder.size()];
+		for (int i = 0; i <= rleHolder.size() -1; i++) 
+		{
+			x[i] = rleHolder.get(i);
+		}
+		rleHolder.clear();
+		return x;
+	}
+}
+
+Output:
+[4, 6, 3, 1, 5, 9]
+[1, 6, 1, 8, 1, 6, 1, 9, 1, 2, 2, 1, 1, 9, 1, 7, 1, 4, 1, 3, 1, 2]
+[]
+
+4.
+Animal Sourcecode:
+public class Animal {
+	public String toString() {
+		return "Animal";
+	}
+	
+	public boolean isAlive() 
+	{return true;}
+	public boolean hasScales()
+	{return false;}
+	public boolean barks() 
+	{return false;}
+	public boolean swims() 
+	{return false;}
+	public boolean hasFur() 
+	{return false;}
+	public boolean hasFeathers() 
+	{return false;}
+	public boolean hasExoskeleton() 
+	{return false;}
+	public int numLegs() 
+	{return 0;}
+}
+Bird Sourcecode:
+public class Bird extends Animal{
+	private String myName;
+	public Bird (String myName) 
+	{
+		this.myName = myName;
+	}
+	public String toString() {
+		return "My name is Polly, I am a Bird";
+	}
+	public boolean hasFeathers() 
+	{return true;}
+	public int numLegs() 
+	{return 2;}
+}
+Bug Sourcecode:
+public class Bug extends Animal{
+	private String myName;
+	public Bug (String myName) 
+	{
+		this.myName = myName;
+	}
+	public String toString() {
+		return "My name is Flik, I am a Bug";
+	}
+	public boolean hasExoskeleton() 
+	{return true;}
+	public int numLegs() 
+	{return 100;}
+}
+
+Fish Sourcecode:
+public class Fish extends Animal{
+	private String myName;
+	public Fish (String myName) 
+	{
+		this.myName = myName;
+	}
+	public String toString() {
+		return "My name is Dorrie, I am a Fish";
+	}
+	public boolean hasScales()
+	{return true;}
+	public boolean swims() 
+	{return true;}
+}
+
+Mammal Sourcecode:
+public class Mammal extends Animal{
+
+	public Mammal () 
+	{
+	
+	}
+	public String toString() {
+		return "I am also a Mammal”";
+	}
+}
+
+Puppy Sourcecode:
+public class AnimalTester {
+	public static void main(String[] args) 
+	{
+	
+		Animal bird = new Bird("Polly");
+		Animal bug = new Bug("Filk");
+		Animal fish = new Fish("Dorrie");
+		Animal puppy = new Puppy("Ranger");
+		Animal[] allAnimals= {bird, bug,fish,puppy};
+		for (int i = 0; i <= allAnimals.length -1; i++) 
+		{
+			printAnimal(allAnimals[i]);
+		}
+
+	}
+	public static void printAnimal(Animal theCritter) 
+	{
+		System.out.println(theCritter);
+		System.out.println("\tAlive? " + theCritter.isAlive());
+		System.out.println("\tDo I have scales? " + theCritter.hasScales());
+		System.out.println("\tDo I swim? " + theCritter.swims());
+		System.out.println("\tDo I have feathers? " + theCritter.hasFeathers());
+		System.out.println("\tDo I bark? " + theCritter.barks());
+		System.out.println("\tDo I have fur? " + theCritter.hasFur());
+		System.out.println("\tDo I have an exoskeleton? " + theCritter.hasExoskeleton());
+		System.out.println("\tI have " + theCritter.numLegs() + " legs " );
+	}
+}
+
+AnimalTester Sourcecode:
+public class AnimalTester {
+	public static void main(String[] args) 
+	{
+	
+		Animal bird = new Bird("Polly");
+		Animal bug = new Bug("Filk");
+		Animal fish = new Fish("Dorrie");
+		Animal puppy = new Puppy("Ranger");
+		Animal[] allAnimals= {bird, bug,fish,puppy};
+		for (int i = 0; i <= allAnimals.length -1; i++) 
+		{
+			printAnimal(allAnimals[i]);
+		}
+
+	}
+	public static void printAnimal(Animal theCritter) 
+	{
+		System.out.println(theCritter);
+		System.out.println("\tAlive? " + theCritter.isAlive());
+		System.out.println("\tDo I have scales? " + theCritter.hasScales());
+		System.out.println("\tDo I swim? " + theCritter.swims());
+		System.out.println("\tDo I have feathers? " + theCritter.hasFeathers());
+		System.out.println("\tDo I bark? " + theCritter.barks());
+		System.out.println("\tDo I have fur? " + theCritter.hasFur());
+		System.out.println("\tDo I have an exoskeleton? " + theCritter.hasExoskeleton());
+		System.out.println("\tI have " + theCritter.numLegs() + " legs " );
+	}
+}
+
+Output:
+My name is Polly, I am a Bird
+	Alive? true
+	Do I have scales? false
+	Do I swim? false
+	Do I have feathers? true
+	Do I bark? false
+	Do I have fur? false
+	Do I have an exoskeleton? false
+	I have 2 legs 
+My name is Flik, I am a Bug
+	Alive? true
+	Do I have scales? false
+	Do I swim? false
+	Do I have feathers? false
+	Do I bark? false
+	Do I have fur? false
+	Do I have an exoskeleton? true
+	I have 100 legs 
+My name is Dorrie, I am a Fish
+	Alive? true
+	Do I have scales? true
+	Do I swim? true
+	Do I have feathers? false
+	Do I bark? false
+	Do I have fur? false
+	Do I have an exoskeleton? false
+	I have 0 legs 
+My name is Ranger, I am a Puppy but I am also a Mammal
+	Alive? true
+	Do I have scales? false
+	Do I swim? false
+	Do I have feathers? false
+	Do I bark? true
+	Do I have fur? true
+	Do I have an exoskeleton? false
+	I have 4 legs
+
+Extra Credit
+1.
+Sourcecode:
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class reverseRLE {
+	public static void main(String[] args) 
+	{
+		ArrayList<Integer> rleHolder = new ArrayList<Integer>();
+		int[] test1 = {6, 6, 6, 6, 1, 1, 1, 9, 9, 9, 9, 9};
+		int[] test2 = {6, 8, 6, 9, 2, 1, 1, 9, 7, 4, 3, 2};
+		int[] test3 = {};
+		int[] rle1 = rle(rleHolder,test1);
+		int[] rle2 = rle(rleHolder,test2);
+		int[] rle3 = rle(rleHolder,test3);
+
+		System.out.println(Arrays.toString(reverseRLE(rleHolder, rle1)));
+		System.out.println(Arrays.toString(reverseRLE(rleHolder, rle2)));
+		System.out.println(Arrays.toString(reverseRLE(rleHolder, rle3)));
+	}
+	public static int[] rle(ArrayList<Integer> rleHolder, int[] a1) 
+	{
+		if (a1.length == 0) 
+		{
+			int[] zero = {};
+			return zero;
+		}
+		if (a1 == null) 
+		{
+			throw new IllegalArgumentException(" The array is null");
+		}
+		
+		for (int i = 0; i <= a1.length -1; i++) 
+		{
+			int count = 1;
+			int j = 0;
+			while (i < a1.length -1 && a1[i] == a1[i+1]) 
+			{
+					count++;
+					i++;
+			}
+			rleHolder.add(count);
+			rleHolder.add(a1[i]);
+		}
+		int[] x = new int [rleHolder.size()];
+		for (int i = 0; i <= rleHolder.size() -1; i++) 
+		{
+			x[i] = rleHolder.get(i);
+		}
+		rleHolder.clear();
+		return x;
+	}
+	public static int[] reverseRLE(ArrayList<Integer> rleHolder, int[] a1) 
+	{
+		if (a1.length == 0) 
+		{
+			int[] zero = {};
+			return zero;
+		}
+		if (a1 == null) 
+		{
+			throw new IllegalArgumentException(" The array is null");
+		}
+		for (int i = 1; i <= a1.length -1; i = i+2 ) 
+		{
+			for (int j = 0; j <= a1[i-1] -1; j++) 
+			{
+			rleHolder.add(a1[i]);
+			}
+		}
+		int[] x = new int [rleHolder.size()];
+		for (int i = 0; i <= rleHolder.size() -1; i++) 
+		{
+			x[i] = rleHolder.get(i);
+		}
+		rleHolder.clear();
+		return x;
+	}
+}
+
+Output:
+
+2.
+[6, 6, 6, 6, 1, 1, 1, 9, 9, 9, 9, 9]
+[6, 8, 6, 9, 2, 1, 1, 9, 7, 4, 3, 2]
+[]
+Sourcecode:
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+
+public class Steps {
+
+	public static void main(String[] args) {
+		DrawingPanel myDPanel = new DrawingPanel (650, 400);
+		Graphics2D g = myDPanel.getGraphics();
+		AffineTransform saveAT = g.getTransform();
+		steps(g);
+	}
+	public static void steps (Graphics2D g) 
+	{
+		for (int i = 1; i <= 10; i++) 
+		{
+			g.drawRect(10, 0 + (i*10), 10 * i, 10);
+		}
+	}
+
+
+}
+Output:
+Image in BBrownstein_StepsImage

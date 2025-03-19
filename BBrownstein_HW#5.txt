@@ -1,0 +1,191 @@
+Ben Brownstein HW#5
+Chapter 4
+16. Sourcecode:
+import java.util.Scanner;
+public class printPalindrome {
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		printPalindrome(sc);
+		printPalindrome(sc);
+	}
+	public static void printPalindrome(Scanner sc) 
+	{
+	    System.out.print("Type a word: ");
+	    String str = sc.nextLine();
+	    int front = 0;
+	    int back = str.length()-1;
+	     while (front < back) 
+	     {
+	    	 if (str.charAt(front) != str.charAt(back)) 
+	    	 {
+	    		 System.out.println(str + " is not a palindrome.");
+	             return;
+	    	 }
+	    	 front++;
+	         back--;
+	     }
+	     
+	     System.out.println(str + " is a palindrome");
+	 }
+}
+
+Output:
+Type a word: abba
+abba is a palindrome
+Type a word: test
+test is not a palindrome.
+
+Chapter 5
+11. Sourcecode:
+package threeHeads;
+import java.util.Random;
+public class threeHeads {
+	public static void main(String[] args) 
+	{
+		threeHeads();
+	}
+	public static void threeHeads() 
+	{
+		Random flip = new Random();
+		int heads = 0;
+		int toss = 0;
+		int count = 0;
+		while (heads <= 2) 
+		{
+			toss = flip.nextInt(2);
+			if (toss == 1) 
+			{
+				System.out.print("H ");
+				heads = heads + 1;
+			}
+			if (toss == 0) 
+			{
+				System.out.print("T ");
+				heads = 0;
+			}
+		}
+		System.out.println("");
+		System.out.println("Three Heads in a row!");
+	}
+}
+Output:
+H H T T H T T T T H T H T H T H H T H H H 
+Three Heads in a row!
+
+13. Sourcecode:
+public static void main(String[] args) 
+	{
+		System.out.println(consecutive(1,2,3));
+		System.out.println(consecutive(3,2,4));
+		System.out.println(consecutive(-10,-8,-9));
+		System.out.println(consecutive(3,5,7));
+		System.out.println(consecutive(1,2,2));
+		System.out.println(consecutive(7,7,9));
+		
+	}
+	public static boolean consecutive(int k, int j, int l) 
+	{
+		if (k + j + l == k + k + 1 + k +2 ) 
+		{
+			return true;
+		} else if (k + j + l == j + j + 1 + j +2) 
+		{
+			return true;
+		}else if (k + j + 1 == l + l + 1 + l +2) 
+		{
+			return true;
+		} else 
+		{
+			return false;
+		}
+		
+	}
+}
+
+Output:
+true
+true
+true
+false
+false
+false
+
+14. Sourcecode:
+public class hasMidpoint {
+	public static void main(String[] args) 
+	{
+		System.out.println(hasMidpoint(7,4,10));
+		System.out.println(hasMidpoint(9,15,8));
+	}
+	public static boolean hasMidpoint(int a, int b, int c) {
+	    int maxValue = Math.max(a, Math.max(b, c));
+	    int minValue = Math.min(a, Math.min(b, c));
+	    int midpoint = a + b + c - maxValue - minValue;
+	    
+	    return maxValue - midpoint == midpoint - minValue;
+
+	}
+}
+
+Output:
+true
+false
+
+15. Sourcecode:
+public class dominant {
+	public static void main(String[] args) 
+	{
+		System.out.println(dominant(4,9,2));
+		System.out.println(dominant(9,2,4));
+		System.out.println(dominant(4,2,9));
+		System.out.println(dominant(5,5,5));
+	}
+	public static boolean dominant(int a, int b, int c) 
+	{
+		if (a+b <= c) 
+		{
+			return true;
+		} else if (a+c <=b) 
+		{
+			return true;
+		}else if (b+c <=a) 
+		{
+			return true;
+		} else 
+		{
+			return false;
+		}
+	}
+}
+Output:
+true
+true
+true
+false
+
+18. Sourcecode:
+public class digitSum {
+	public static void main(String[] args) 
+	{
+		System.out.println(digitSum(29107));
+		System.out.println(digitSum(-456));
+	}
+	public static int digitSum(int in) 
+	{
+		in = Math.abs(in);
+		int sum = 0;
+		
+		while (in > 0) 
+		{
+			sum = sum + in % 10;
+			in = in / 10;
+		}
+		return sum;
+	}
+}
+
+Output:
+19
+15
+
